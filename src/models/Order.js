@@ -16,6 +16,7 @@ const orderSchema = new mongoose.Schema(
     items: [
       {
         item: itemSchema,
+        observation: { type: String, default: "" },
       },
     ],
   },

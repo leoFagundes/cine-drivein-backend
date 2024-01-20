@@ -9,7 +9,6 @@ const itemSchema = new mongoose.Schema(
     type: { type: String, required: true },
     description: { type: String },
     value: { type: Number, required: true },
-    observation: { type: String },
     quantity: { type: Number, required: true, default: 1 },
     photo: { type: String },
     isVisible: { type: Boolean, default: true },
