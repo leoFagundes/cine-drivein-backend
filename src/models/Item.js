@@ -12,7 +12,7 @@ const itemSchema = new mongoose.Schema(
     observation: { type: String },
     quantity: { type: Number, required: true, default: 1 },
     photo: { type: String },
-    isVisible: { type: Boolean },
+    isVisible: { type: Boolean, default: true },
 
     additionals: [
       {
