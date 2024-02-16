@@ -10,7 +10,7 @@ const itemSchema = new mongoose.Schema(
     description: { type: String },
     value: { type: Number, required: true },
     quantity: { type: Number, required: true, default: 1 },
-    photo: { type: String },
+    photo: { type: String, default: "" },
     isVisible: { type: Boolean, default: true },
 
     additionals: [
