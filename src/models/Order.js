@@ -18,6 +18,10 @@ const orderSchema = new mongoose.Schema(
       {
         item: itemSchema,
         observation: { type: String, default: "" },
+        additional: { type: String },
+        additional_sauce: { type: String },
+        additional_drink: { type: String },
+        additional_sweet: { type: String },
       },
     ],
   },
