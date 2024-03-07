@@ -4,7 +4,7 @@ import { additionalItemSchema } from "./AdditionalItem.js";
 const itemSchema = new mongoose.Schema(
   {
     id: { type: mongoose.Schema.Types.ObjectId },
-    cod_item: { type: String, required: true, unique: true },
+    cod_item: { type: String, required: true },
     name: { type: String, required: true },
     type: { type: String, required: true },
     description: { type: String },

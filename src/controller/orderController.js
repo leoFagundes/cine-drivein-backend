@@ -24,6 +24,19 @@ class OrderController {
   }
 
   static async createOrder(req, res) {
+    try {
+      const newOrder = await order.create(req.body);
+      res
+        .status(200)
+        .json({ message: "Order created successfully", order: newOrder });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: `${error.message} - failed to create order.` });
+    }
+  }
+
+  static async createOrderWithId(req, res) {
     const newOrderData = req.body;
     try {
       const newOrder = JSON.parse(JSON.stringify(newOrderData));
