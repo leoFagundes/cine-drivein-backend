@@ -6,7 +6,6 @@ const orderSchema = new mongoose.Schema(
     id: { type: mongoose.Schema.Types.ObjectId },
     username: { type: String },
     phone: { type: String },
-    parking_space: { type: String },
     status: { type: String },
     spot: { type: Number },
     money_payment: { type: Number },
