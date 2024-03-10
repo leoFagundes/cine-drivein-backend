@@ -4,7 +4,7 @@ import { itemSchema } from "./Item.js";
 const orderSchema = new mongoose.Schema(
   {
     id: { type: mongoose.Schema.Types.ObjectId },
-    order_number: { type: Number, default: 1 },
+    order_number: { type: Number },
     username: { type: String },
     phone: { type: String },
     status: { type: String },
