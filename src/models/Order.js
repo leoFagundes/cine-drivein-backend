@@ -13,6 +13,7 @@ const orderSchema = new mongoose.Schema(
     credit_payment: { type: Number },
     debit_payment: { type: Number },
     service_fee: { type: Number },
+    service_fee_paid: { type: Boolean, default: true },
     total_value: { type: Number },
     items: [
       {
