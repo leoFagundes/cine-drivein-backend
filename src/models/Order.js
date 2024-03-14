@@ -14,6 +14,7 @@ const orderSchema = new mongoose.Schema(
     debit_payment: { type: Number },
     service_fee: { type: Number },
     service_fee_paid: { type: Boolean, default: true },
+    discount: { type: Number, default: 0 },
     total_value: { type: Number },
     items: [
       {
