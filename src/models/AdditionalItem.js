@@ -6,6 +6,7 @@ const additionalItemSchema = new mongoose.Schema(
     name: { type: String, required: true },
     description: { type: String },
     photo: { type: String },
+    isVisible: { type: Boolean, default: true },
   },
   {
     versionKey: false,
