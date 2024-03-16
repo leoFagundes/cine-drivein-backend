@@ -6,7 +6,12 @@ const statisticsDataSchema = new mongoose.Schema(
     canceledOrders: { type: Number },
     finishedOrders: { type: Number },
     invoicing: { type: Number },
-    items: { type: [String] },
+    items: [
+      {
+        itemName: { type: String },
+        quantity: { type: Number },
+      },
+    ],
   },
   {
     versionKey: false,
