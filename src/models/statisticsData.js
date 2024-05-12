@@ -12,12 +12,26 @@ const statisticsDataSchema = new mongoose.Schema(
         quantity: { type: Number },
       },
     ],
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now },
   },
   {
     versionKey: false,
-    timestamps: true,
+    //timestamps: true,
   }
 );
+
+statisticsDataSchema.pre("save", function (next) {
+  // Ajusta a data/hora para o fuso horário de Brasília
+  const brasilTimeZoneOffset = -3 * 60; // Offset em minutos
+  const now = new Date();
+  const adjustedDate = new Date(now.getTime() + brasilTimeZoneOffset * 60000);
+
+  this.createdAt = adjustedDate;
+  this.updatedAt = adjustedDate;
+
+  next();
+});
 
 const statisticsData = mongoose.model("statisticsData", statisticsDataSchema);
 
