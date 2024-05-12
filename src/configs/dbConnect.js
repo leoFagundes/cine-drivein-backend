@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// database conection
+
 async function connectDB() {
   mongoose.connect(
     `mongodb+srv://admin:${process.env.PASSWORD_DB_CONNECTION}@cluster0.mpcuegc.mongodb.net/cineDB?retryWrites=true&w=majority`

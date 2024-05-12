@@ -1,5 +1,18 @@
 import { item } from "../models/Item.js";
 import { additionalItem } from "../models/AdditionalItem.js";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import crypto from "crypto";
+
+const randomImageName = (bytes = 32) =>
+  crypto.randomBytes(bytes).toString("hex");
+
+const s3 = new S3Client({
+  credentials: {
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+  },
+  region: process.env.AWS_REGION,
+});
 
 class ItemController {
   static async getItems(req, res) {
@@ -115,6 +128,27 @@ class ItemController {
       res
         .status(500)
         .json({ message: `${error.message} - failed to delete item` });
+    }
+  }
+
+  static async createImageItem(req, res) {
+    try {
+      const imageName = `${req.file.originalname}${randomImageName()}`;
+      const params = {
+        Bucket: "cine-drive-in",
+        Key: imageName,
+        Body: req.file.buffer,
+        ContentType: req.file.mimetype,
+      };
+      const command = new PutObjectCommand(params);
+
+      await s3.send(command);
+
+      res.status(200).json({
+        message: `https://cine-drive-in.s3.amazonaws.com/${imageName}`,
+      });
+    } catch (error) {
+      console.log(error);
     }
   }
 }
