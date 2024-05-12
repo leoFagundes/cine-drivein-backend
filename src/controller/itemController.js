@@ -1,6 +1,10 @@
 import { item } from "../models/Item.js";
 import { additionalItem } from "../models/AdditionalItem.js";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import {
+  S3Client,
+  PutObjectCommand,
+  DeleteObjectCommand,
+} from "@aws-sdk/client-s3";
 import crypto from "crypto";
 
 const randomImageName = (bytes = 32) =>
@@ -128,6 +132,27 @@ class ItemController {
       res
         .status(500)
         .json({ message: `${error.message} - failed to delete item` });
+    }
+  }
+
+  static async deleteItemImage(req, res) {
+    try {
+      const { imageName } = req.body;
+      const params = {
+        Bucket: "cine-drive-in",
+        Key: imageName,
+      };
+      const command = new DeleteObjectCommand(params);
+      await s3.send(command);
+      console.log(`Imagem ${imageName} excluída com sucesso.`);
+      res
+        .status(200)
+        .json({ message: `Imagem ${imageName} excluída com sucesso.` });
+    } catch (error) {
+      console.error(`Erro ao excluir imagem ${imageName} do bucket:`, error);
+      res.status(500).json({
+        message: `Erro ao excluir imagem ${imageName} do bucket: ${error.message}`,
+      });
     }
   }
 
