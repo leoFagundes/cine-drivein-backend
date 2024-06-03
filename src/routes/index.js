@@ -5,9 +5,10 @@ import additionalItems from "./additionalItemRouter.js";
 import orders from "./orderRouter.js";
 import schedule from "./operatingScheduleRouter.js";
 import statistics from "./statisticsDataRouter.js";
+import print from "./printerRouter.js";
 
 const routes = (app) => {
-  app.route("/").get((req, res) => res.status(200).send("Cine Drive-in"));
+  app.route("/").get((req, res) => res.status(200).send("Cine Drive-in!"));
 
   app.use(
     express.json(),
@@ -16,7 +17,8 @@ const routes = (app) => {
     additionalItems,
     orders,
     schedule,
-    statistics
+    statistics,
+    print
   );
 };
 
