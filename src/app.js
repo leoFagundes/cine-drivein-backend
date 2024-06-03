@@ -2,6 +2,7 @@ import express from "express";
 import routes from "./routes/index.js";
 import connectDB from "./configs/dbConnect.js";
 import cors from "cors";
+import printer from "./services/printer.js";
 
 const connection = await connectDB();
 
@@ -20,5 +21,8 @@ connection.once("open", () => {
 const app = express();
 app.use(cors());
 routes(app);
+
+printer.println("Hello World");
+printer.cut();
 
 export default app;
