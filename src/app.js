@@ -22,7 +22,4 @@ const app = express();
 app.use(cors());
 routes(app);
 
-printer.println("Hello World");
-printer.cut();
-
 export default app;

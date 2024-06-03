@@ -12,6 +12,14 @@ class PrinterController {
       res.status(500).json({ message: `failed to printer - ${error}` });
     }
   }
+
+  static async printTestGet(req, res) {
+    try {
+      res.status(200).json("Print test successfully!");
+    } catch (error) {
+      res.status(500).json({ message: `${error} - failed to test print.` });
+    }
+  }
 }
 
 export default PrinterController;
