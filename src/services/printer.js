@@ -15,7 +15,7 @@ printer:My Printer Name -	Select system printer by name via Printer or Electron 
 
 let printer = new ThermalPrinter({
   type: PrinterTypes.EPSON,
-  interface: "\\\\.\\COM1",
+  interface: "tcp://192.168.0.99:9100",
   characterSet: CharacterSet.PC852_LATIN2,
   removeSpecialCharacters: false,
   lineCharacter: "=",
