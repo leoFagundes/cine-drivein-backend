@@ -4,11 +4,11 @@ class PrinterController {
   static async print(req, res) {
     try {
       const { text } = req.body;
-      // let isConnected = await printer.isPrinterConnected();
+      let isConnected = await printer.isPrinterConnected();
 
-      // if (!isConnected) {
-      //   return res.status(500).json({ message: "Printer not connected" });
-      // }
+      if (!isConnected) {
+        return res.status(500).json({ message: "Printer not connected" });
+      }
 
       printer.alignCenter(); // Alinha o texto ao centro
       printer.println("Hello World"); // Adiciona texto com nova linha
