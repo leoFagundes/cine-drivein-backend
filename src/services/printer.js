@@ -13,7 +13,7 @@ interface:
 
 const printer = new ThermalPrinter({
   type: PrinterTypes.EPSON,
-  interface: "//./COM1", // Endereço da impressora
+  interface: "//./COM3", // Endereço da impressora
   characterSet: CharacterSet.PC852_LATIN2,
   options: {
     timeout: 5000, // Tempo limite de conexão (ms)
