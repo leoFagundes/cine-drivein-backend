@@ -112,9 +112,67 @@ class ItemController {
   }
 
   static async updateItem(req, res) {
+    const newItemData = req.body;
     try {
+      const newItem = JSON.parse(JSON.stringify(newItemData));
+
+      const fetchAdditionalItem = async (additionalId) => {
+        try {
+          const additionalItemFound = await additionalItem.findById(
+            additionalId
+          );
+          if (additionalItemFound) {
+            return { additionalItem: { ...additionalItemFound._doc } };
+          } else {
+            console.error(`AdditionalItem with ID ${additionalId} not found.`);
+            return { additionalItem: null };
+          }
+        } catch (error) {
+          console.error(
+            `Failed to search additionalItem with ID ${additionalId}: ${error.message}`
+          );
+          return { additionalItem: null };
+        }
+      };
+
+      if (newItem.additionals) {
+        newItem.additionals = await Promise.all(
+          newItem.additionals.map(async (additional) => {
+            const additionalId = additional.additionalItem;
+            return await fetchAdditionalItem(additionalId);
+          })
+        );
+      }
+
+      if (newItem.additionals_sauces) {
+        newItem.additionals_sauces = await Promise.all(
+          newItem.additionals_sauces.map(async (additional) => {
+            const additionalId = additional.additionalItem;
+            return await fetchAdditionalItem(additionalId);
+          })
+        );
+      }
+
+      if (newItem.additionals_drinks) {
+        newItem.additionals_drinks = await Promise.all(
+          newItem.additionals_drinks.map(async (additional) => {
+            const additionalId = additional.additionalItem;
+            return await fetchAdditionalItem(additionalId);
+          })
+        );
+      }
+
+      if (newItem.additionals_sweets) {
+        newItem.additionals_sweets = await Promise.all(
+          newItem.additionals_sweets.map(async (additional) => {
+            const additionalId = additional.additionalItem;
+            return await fetchAdditionalItem(additionalId);
+          })
+        );
+      }
+
       const id = req.params.id;
-      await item.findByIdAndUpdate(id, req.body);
+      await item.findByIdAndUpdate(id, newItem);
       res.status(200).json({ message: "Item updated successfully." });
     } catch (error) {
       res
