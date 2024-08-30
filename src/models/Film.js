@@ -17,7 +17,7 @@ const filmSchema = new mongoose.Schema(
     language: { type: String, required: true }, // Idioma do filme
     displayDate: { type: String, required: true }, // Data de exibição
     trailer: { type: String, required: true }, // URL do trailer do filme
-    Screening: { type: String, required: true }, // Sessão
+    screening: { type: String, required: true }, // Sessão
   },
   {
     versionKey: false, // Desabilita a versão do documento
