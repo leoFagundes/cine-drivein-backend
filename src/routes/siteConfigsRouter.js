@@ -15,7 +15,7 @@ routes.post(
   upload.single("image"),
   SiteConfigsController.createImageItem
 );
-routes.post("/items/deleteImage", SiteConfigsController.deleteItemImage);
+routes.post("/site-configs/deleteImage", SiteConfigsController.deleteItemImage);
 routes.put("/site-configs/:id", SiteConfigsController.updateConfig);
 routes.delete("/site-configs/:id", SiteConfigsController.deleteConfig);
 
