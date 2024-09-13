@@ -7,6 +7,7 @@ import schedule from "./operatingScheduleRouter.js";
 import statistics from "./statisticsDataRouter.js";
 import print from "./printerRouter.js";
 import film from "./filmRouter.js";
+import siteConfig from "./siteConfigsRouter.js";
 
 const routes = (app) => {
   app.route("/").get((req, res) => res.status(200).send("Cine Drive-in!"));
@@ -20,7 +21,8 @@ const routes = (app) => {
     schedule,
     statistics,
     print,
-    film
+    film,
+    siteConfig
   );
 };
 
