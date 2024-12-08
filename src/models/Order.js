@@ -10,6 +10,7 @@ const orderSchema = new mongoose.Schema(
     status: { type: String },
     spot: { type: Number },
     money_payment: { type: Number },
+    pix_payment: { type: Number },
     credit_payment: { type: Number },
     debit_payment: { type: Number },
     service_fee: { type: Number },
