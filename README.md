@@ -3,10 +3,6 @@
 ## Descrição do Projeto
 <p>O back-end do projeto Cine Drive-in de Brasília é responsável por gerenciar a lógica de negócios, a comunicação com o banco de dados MongoDB e o armazenamento de imagens no Amazon S3. Ele fornece uma API para suportar as funcionalidades dos front-ends (web e admin).</p>
 
-<h4 align="center"> 
-	🚧  Cine Drive-in Back-End 🚀 Em construção...  🚧
-</h4>
-
 <p align="center">
  <a href="#features">Features</a> •
  <a href="#pre-requisitos">Pré-requisitos</a> • 
