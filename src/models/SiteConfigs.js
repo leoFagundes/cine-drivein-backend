@@ -11,6 +11,7 @@ const siteConfigsSchema = new mongoose.Schema(
       title: { type: String, default: "" },
       description: { type: [String], default: [""] },
     },
+    orderTypes: { type: [String], default: [""] },
   },
   {
     versionKey: false, // Desabilita a versão do documento
